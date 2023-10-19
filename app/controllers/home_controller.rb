@@ -2,8 +2,8 @@ class HomeController < ApplicationController
   def index
     require"net/http"
     require"json"
-
-    @search_location = "london"
+    
+    @search_location = params[:search] #"london"
     @url = "https://api.weatherapi.com/v1/current.json?key=ffa3372bc900435d89075502231910&q=#{@search_location}&aqi=yes"
     @uri = URI(@url)
     @response = Net::HTTP.get(@uri)
@@ -20,6 +20,10 @@ class HomeController < ApplicationController
       @air_quality_index = get_air_quality_index_text(@output["current"]["air_quality"]["us-epa-index"])
       @background_colour = get_background_colour_from_temp(@temp.to_i)
     end 
+  end
+
+  def search
+    redirect_to action: 'index', search: params[:search]
   end
 
   private
