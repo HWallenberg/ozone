@@ -1,0 +1,26 @@
+<div class="alert <%=@background_colour%>" role="alert">
+  <% if @error != ""%>
+   <h4 class="alert-heading mb-3"> 
+    <%=@error %>
+  </h4>
+  <%else%>
+    <h4 class="alert-heading mb-3"> 
+        <%=@location %>
+        <%=@temp %>
+    </h4>
+    <p>
+        <%=@condition%>
+    </p>
+    <p>
+    Air Quality: <%=@air_quality_index%>
+    </p>
+  <%end%>
+</div>
+
+<br/>
+
+
+
+
+
+
